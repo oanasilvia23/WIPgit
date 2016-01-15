@@ -1,0 +1,57 @@
+﻿@model List<WIPCream.DataGateway.DAL2.Models.Posts>
+<link href="~/assets/css/commentstyle.css" rel="stylesheet" type="text/css" />
+@using (Html.BeginForm("AddPost", "Threads", FormMethod.Post, new { @id = "validation_form", @class = "form-horizontal" }))
+{
+   @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    
+    <div class="portlet-body" id="chats">
+        
+        <div class="scroller" data-rail-visible1="1" style="height:250px">           
+            @foreach (var item in Model)
+            {
+                @Html.HiddenFor(m => item.Email)
+                <ul class="chats">
+                    <li class="out">
+                        <img class="avatar img-responsive" alt="" src="~/assets/img/avatar1.jpg" />
+                        <div class="message">
+                            <span class="arrow">
+                            </span>
+
+                            <span class="datetime">
+                                @Html.DisplayFor(modelItem => item.date)
+                            </span>
+                            <span class="body">
+                                @Html.DisplayFor(modelItem => item.message)
+                            </span>
+
+                        </div>
+                    </li>
+
+
+                </ul>
+            }
+
+        </div>
+            
+        <div id="refresh">
+            <div class="chat-form">
+                <div class="input-block-level">
+                    <div class="row">
+                        <div class="col-md-11">
+                            @Html.TextBox("message", null, new { @id = "message", @class = "form-control reload" })
+                            @Html.Hidden("ThreadID",null , new { id = "threadid" })
+                           @* @Html.Hidden("Message","Post",new { id = "message" })*@
+                            
+                        </div>
+                        <div class="col-md-1">
+                            <input id="SubmitComment" type="submit" value="Submit" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

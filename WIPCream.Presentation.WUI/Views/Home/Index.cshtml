@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@Html.Partial("_Navigation")
+
+<div id="wrapper" style="background: white;">
+    <div class="jumbotron" style="background: url('images/header.jpg') 50% 0px no-repeat; color: white; height: 500px">
+        <h1>E-learning</h1>
+        <p class="lead">Welcome to the WIP Team's e-learning website. Here you will find all the necessary resources for an easy and flexible way of learning.</p>
+        <p style="font-size: 15px;">On this website, our instuctors can quickly add their courses, seminars, homeworks, grade their students and answer questions.
+           Students can attend multiple classes, post homeworks, chat with other course members on forums or via e-mails. All these are done
+           in an accessible, adaptive and social learning environment.</p>
+    </div>
+</div>
+
+@using Microsoft.AspNet.Identity
+@if (!Request.IsAuthenticated)
+{
+    <script>
+        $(".jumbotron").css("padding-top", "100px");
+        $(".jumbotron").css("padding-left", "70px");
+    </script>
+}

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WIPCream.Presentation.WUI.Models.User.UserUIDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Html.Partial("_Navigation")
+<div id="wrapper">
+    <div class="row content">
+        <div class="col-xs-12">
+            <div class="hpanel hgreen">
+                <div class="panel-body">
+                    <div class="pull-left text-left">
+                        <div class="hpanel">
+                            <h2>Index</h2>
+                                <p>
+                                    @Html.ActionLink("Create New", "Create")
+                                </p>
+                                <table class="table">
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.UserName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FirstName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Lastname)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Email)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.StudentId)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+
+                                    @foreach (var item in Model)
+            {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.UserName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FirstName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Lastname)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.StudentId)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

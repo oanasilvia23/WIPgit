@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Linkz";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<div>
+    @Html.ActionLink("List of users", "Index", "Users")<br/>
+    @Html.ActionLink("List of users assigned to disciplines", "Index", "UserDisciplines")<br/>
+    @Html.ActionLink("List of roles assigned to users", "Index", "UserRoles")<br />
+    @Html.ActionLink("List of disciplines", "Index", "Disciplines")<br/>
+    @Html.ActionLink("List of assignments", "Index", "Assignments")<br/>
+    @Html.ActionLink("List of tests", "Index", "Tests")<br/>
+    @Html.ActionLink("List of courses", "Index", "Courses")<br />
+    @Html.ActionLink("List of threads", "Index", "Threads")<br />
+</div>
+<p>Use this area to provide additional information.</p>

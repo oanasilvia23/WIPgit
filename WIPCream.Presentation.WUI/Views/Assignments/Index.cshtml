@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WIPCream.Presentation.WUI.Models.Assignment.AssignmentUIDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Html.Partial("_Navigation")
+
+<div id="wrapper">
+    <div class="row content">
+        <div class="col-xs-12">
+            <div class="hpanel hgreen">
+                <div class="panel-body">
+                    <div class="hpanel">
+                        <h2>Assignments</h2>
+
+                        <p>
+                            @Html.ActionLink("Create New", "Create")
+                        </p>
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CreatedAt)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Deadline)
+                                </th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreatedAt)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Deadline)
+                                    </td>                                    
+                                    <td>
+                                         @Html.ActionLink("Edit", "Edit", new { id = item.AssignmentId }) |
+                                         @Html.ActionLink("Details", "Details", new { id = item.AssignmentId }) |
+                                         @Html.ActionLink("Delete", "Delete", new { id = item.AssignmentId })
+                                            </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

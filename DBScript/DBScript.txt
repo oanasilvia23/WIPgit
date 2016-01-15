@@ -1,0 +1,73 @@
+CREATE DATABASE WIPCream2
+USE WIPCream2;
+
+
+CREATE TABLE Discipline
+(
+	DisciplineId int PRIMARY KEY identity not null,
+	Name nvarchar(50) null
+)
+
+CREATE TABLE Assignment
+(
+	AssignmentId int PRIMARY KEY identity not null,
+	DisciplineId int REFERENCES Discipline(DisciplineId) not null,
+	Name nvarchar(50) null,
+	Description nvarchar(500) null,
+	CreatedAt DateTime null,
+	Deadline DateTime null
+)
+
+CREATE TABLE Test
+(
+	TestId int PRIMARY KEY identity not null,
+	DisciplineId int REFERENCES Discipline(DisciplineId) not null,
+	Name nvarchar(50) null,
+	CreatedAt DateTime null
+)
+
+CREATE TABLE Course
+(
+	CourseId int PRIMARY KEY identity not null,
+	DisciplineId int REFERENCES Discipline(DisciplineId) not null,
+	Name nvarchar(50) null,
+	Description nvarchar(500) null,
+	CreatedAt DateTime null,
+	Deadline DateTime null
+)
+
+CREATE TABLE Groupe
+(
+	GroupeId int PRIMARY KEY identity not null,
+	DisciplineId int REFERENCES Discipline(DisciplineId) not null,
+	Name nvarchar(50) null,
+	Description nvarchar(500) null,
+)
+
+CREATE TABLE Users
+(
+	UserId int PRIMARY KEY identity not null,
+	UserName nvarchar(50) null,
+	FirstName nvarchar(50) null,
+	Lastname nvarchar(50) null,
+	Email nvarchar(100) null,
+	StudentId int null,
+	Password nvarchar(100) null
+)
+
+CREATE TABLE UserDiscipline
+(
+	UserDisciplineId int PRIMARY KEY identity not null,
+	UsereId int REFERENCES Users(UserId) not null,
+	DisciplineId int REFERENCES Discipline(DisciplineId) not null
+)
+
+CREATE TABLE UserRole
+(
+	RoleId int PRIMARY KEY identity not null,
+	UserId int REFERENCES Users(UserId) not null
+)
+
+
+
+

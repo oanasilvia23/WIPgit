@@ -1,0 +1,205 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+<div id="header">
+    <div class="color-line">
+    </div>
+    <div id="logo" class="light-version">
+        <span>
+            @Html.ActionLink("HOME", "Index", "Home")
+        </span>
+    </div>
+    <nav role="navigation">
+        <div class="header-link hide-menu"><i class="fa fa-bars"></i></div>
+        <div class="small-logo">
+            <span class="text-primary">HOMER APP</span>
+        </div>
+        <form role="search" class="navbar-form-custom" method="post" action="#">
+            <div class="form-group">
+                <input type="text" placeholder="Search something special" class="form-control" name="search">
+            </div>
+        </form>
+        <div class="navbar-right">
+@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+{
+    @Html.AntiForgeryToken()
+            <ul class="nav navbar-nav no-borders">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        <i class="pe-7s-speaker"></i>
+                    </a>
+                    <ul class="dropdown-menu hdropdown notification animated flipInX">
+                        <li>
+                            <a>
+                                <span class="label label-success">NEW</span> Proiect Colectiv a uploadat curs nou.
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="label label-warning">WAR</span> Ai de predat tema la Proiect Colectiv
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="label label-danger">new</span> Tema X la Proiect Colectiv aluat nota 10.
+                            </a>
+                        </li>
+                        <li class="summary"><a href="#">See all notifications</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle label-menu-corner" href="#" data-toggle="dropdown">
+                        <i class="pe-7s-mail"></i>
+                        <span class="label label-success">4</span>
+                    </a>
+                    <ul class="dropdown-menu hdropdown animated flipInX">
+                        <div class="title">
+                            Ai 4 mesaje.
+                        </div>
+                        <li>
+                            <a>
+                                Ti-ai facut tema?
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                Ce fain e proiect Colectiv.
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                Sti ce sa faci la licenta?
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                FIRMA X ANGAJEZA, BLA BLA BLA.
+                            </a>
+                        </li>
+                        <li class="summary"><a href="#">See All Messages</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    
+                        <a href="javascript:document.getElementById('logoutForm').submit()">
+                            <i class="pe-7s-upload pe-rotate-90"></i>
+                        </a>
+                
+                </li>
+            </ul>
+}
+        </div>
+    </nav>
+</div>
+
+   
+<aside id="menu">
+    <div id="navigation">
+        <div class="profile-picture">
+            <a href="#">
+                <img src="~/images/profile_pic.jpg" class="img-circle m-b" alt="logo" width="100px" height="100px" style="box-shadow: 1px 5px 10px #888888;">
+            </a>
+
+            <div class="stats-label text-color">
+
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        <span class="font-extra-bold font-uppercase">Ovidiu Toma</span>
+                        <i class="fa fa-caret-down"> </i>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="profile.html">Profile</a></li>
+                        <li class="divider"></li>
+                        <li>
+                            <a>
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                }
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div id="sparkline1" class="small-chart m-t-sm"></div>
+                <!-- <div>
+                    <h4 class="font-extra-bold m-b-xs">
+                        $260 104,200
+                    </h4>
+                    <small class="text-muted">Your income from the last year in sales product X.</small>
+                </div> -->
+            </div>
+        </div>
+
+        <ul class="nav" id="side-menu">
+
+            <li class="active">
+                <a href="#"><span class="nav-label">Links</span><span class="fa arrow"></span> </a>
+                <ul class="nav nav-second-level">
+
+                    <li>@Html.ActionLink("Users", "Index", "Users")</li>
+
+                    <li>@Html.ActionLink("Users' Disciplines", "Index", "UserDisciplines")</li>
+
+                    <li>@Html.ActionLink("Users' Roles", "Index", "UserRoles")</li>
+
+                    <li>@Html.ActionLink("Disciplines", "Index", "Disciplines")</li>
+
+                    <li> @Html.ActionLink("Assignments", "Index", "Assignments")</li>
+
+                    <li>@Html.ActionLink("Tests", "Index", "Tests")</li>
+
+                    <li> @Html.ActionLink("Courses", "Index", "Courses")</li>
+
+                    <li>@Html.ActionLink("Threads", "Index", "Threads")</li>
+
+                    <li>@Html.ActionLink("Destinations", "SearchEntityByPage", "destinations")</li>
+
+                    <li>@Html.ActionLink("Questions", "Index", "Questions")</li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</aside>
+<div id="chat_content" style="width: 300px;"></div>
+<script>
+    $(document).ready(function () {
+        window.wip_cream.chat.ChatInitialize("@User.Identity.Name", "@User.Identity.Name" , "300px");
+    });
+</script>
+}
+else
+{
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">Wip T.</a>
+                <div class="brand-desc">
+                       An e-learning application.
+                </div>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script>
+        $(".jumbotron").css("padding-top", "100px");
+        $(".jumbotron").css("padding-left", "70px");
+        $("body").addClass("landing-page");
+    </script>
+
+}

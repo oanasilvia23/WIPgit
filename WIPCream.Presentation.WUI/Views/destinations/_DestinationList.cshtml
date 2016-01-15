@@ -1,0 +1,79 @@
+﻿@using WIPCream.Presentation.WUI.Models.PW9
+@using PagedList
+@using PagedList.Mvc
+@model IPagedList<destinationUIDTO>
+
+<div class="portlet">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Destinations
+        </div>
+        <div class="tools">
+            <a href="javascript:;" class="collapse">
+            </a>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="table-toolbar">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="btn-group">
+                        <a href="/destinations/create" class="btn btn-success">
+                            Add New <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <table class="table table-striped table-hover" id="sample_5">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Location Name</th>
+                    <th>Country</th>
+                    <th>Description</th>
+                    <th>TouristTarget</th>
+                    <th>Cost</th>
+                    <th style="width: 20px">Edit</th>
+                    <th style="width: 20px">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var dest in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => dest.DestinationID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => dest.LocationName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => dest.Country)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => dest.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => dest.TouristTarget)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => dest.Cost)
+                        </td>
+                        <td>
+                            <a href="/destinations/Edit?id=@dest.DestinationID">Edit</a>
+                        </td>
+                        <td>
+                            <a href="/destinations/Delete?id=@dest.DestinationID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="pagedList" data-otf-target="#clientsList">
+            @Html.PagedListPager(Model, page => Url.Action("SearchEntityByPage", new { page }),
+                    PagedListRenderOptions.OnlyShowFivePagesAtATime)
+        </div>
+    </div>
+</div>

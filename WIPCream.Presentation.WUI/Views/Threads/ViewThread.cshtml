@@ -1,0 +1,89 @@
+﻿@model WIPCream.Presentation.WUI.Models.Thread.ThreadUIDTO
+
+@{
+    ViewBag.Title = "Thread";
+}
+@Html.Partial("_Navigation")
+
+<div id="wrapper">
+    <div class="row content">
+        <div class="col-xs-12">
+            <div class="hpanel hgreen">
+                <div class="panel-body">
+                    <div class="hpanel">
+                        <h2>Thread</h2>
+
+
+                        @using (Html.BeginForm("AddPost", "Threads", FormMethod.Post, new { @id = "validation_form", @class = "form-horizontal" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <hr />
+                                <table class="table">
+                                    <tr>
+                                        <th>
+                                            Message
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.title)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.date)
+                                        </th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.title)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.date)
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Posts, "Posts", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                   
+                                    @Html.ValidationMessageFor(model => model.Posts, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="portlet">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-comments"></i>
+                                    </div>
+                                    <div class="tools">
+                                        <a href="" class="collapse"></a>
+                                        <a href="#portlet-config" data-toggle="modal" class="config"></a>
+                                        <a href="" class="reload"></a>
+                                        <a href="" class="remove"></a>
+                                    </div>
+                                </div>
+                                <div id="partialView">
+                                    @Html.Partial("Comments", Model.Posts, new ViewDataDictionary { { "threadid", Model.threadid } })
+                                </div>
+                            </div>
+
+                        }
+
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+
+                        @section Scripts {
+                            @Scripts.Render("~/bundles/jqueryval")
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

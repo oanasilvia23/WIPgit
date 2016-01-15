@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E87BCE4A-B6C2-4877-9450-916BEAE282A7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WIPCream.DataGateway.DAL2</RootNamespace>
+    <AssemblyName>WIPCream.DataGateway.DAL2</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Questions.cs" />
+    <Compile Include="Models\Assignments.cs" />
+    <Compile Include="Models\Courses.cs" />
+    <Compile Include="Models\destination.cs" />
+    <Compile Include="Models\Disciplines.cs" />
+    <Compile Include="Models\Groups.cs" />
+    <Compile Include="Models\Posts.cs" />
+    <Compile Include="Models\Tests.cs" />
+    <Compile Include="Models\Threads.cs" />
+    <Compile Include="Models\UserDisciplines.cs" />
+    <Compile Include="Models\UserRoles.cs" />
+    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\WIPCream2.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AssignmentEntity\AssignmentService.cs" />
+    <Compile Include="Services\AssignmentEntity\IAssignmentService.cs" />
+    <Compile Include="Services\CourseEntity\CourseService.cs" />
+    <Compile Include="Services\CourseEntity\ICourseService.cs" />
+    <Compile Include="Services\DestinationEntity\DestinationService.cs" />
+    <Compile Include="Services\DestinationEntity\IDestinationService.cs" />
+    <Compile Include="Services\DisciplineEntity\DisciplineService.cs" />
+    <Compile Include="Services\DisciplineEntity\IDisciplineService.cs" />
+    <Compile Include="Services\PostEntity\IPostService.cs" />
+    <Compile Include="Services\PostEntity\PostService.cs" />
+    <Compile Include="Services\QuestionEntity\IQuestionService.cs" />
+    <Compile Include="Services\QuestionEntity\QuestionService.cs" />
+    <Compile Include="Services\TestEntity\ITestService.cs" />
+    <Compile Include="Services\TestEntity\TestSevice.cs" />
+    <Compile Include="Services\ThreadEntity\IThreadService.cs" />
+    <Compile Include="Services\ThreadEntity\ThreadService.cs" />
+    <Compile Include="Services\UserDisciplineEntity\IUserDisciplinesService.cs" />
+    <Compile Include="Services\UserDisciplineEntity\UserDisciplinesService.cs" />
+    <Compile Include="Services\UserRoleEntity\IUserRoleService.cs" />
+    <Compile Include="Services\UserRoleEntity\UserRoleService.cs" />
+    <Compile Include="Services\UsersEntity\IUsersService.cs" />
+    <Compile Include="Services\UsersEntity\UsersService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Start\" />
+    <Folder Include="Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
